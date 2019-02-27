@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import "./login.less";
+
 import { connect } from 'react-redux';
 import * as actions from './actions';
 
@@ -23,8 +26,8 @@ class index extends Component {
 		console.log( this.props)
 		let { test } = this.props.loginReducer
 		return (
-			<div onClick={this.test}>
-				{test}
+			<div onClick={this.test} className="div">
+				<p>{test}</p>
 			</div>
 		);
 	}

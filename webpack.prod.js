@@ -11,13 +11,13 @@ process.env.NODE_ENV = 'production';
 module.exports = merge(common, {
 	mode: 'production',
 	plugins: [
-		//提取css文件
-		new ExtractTextPlugin({
-			filename: 'css/[name].[contenthash:8].css',
-		}),
 		new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }),
+			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+		}),
+		// 提取公共css文件
+		new ExtractTextPlugin({
+			filename: 'css/[name].css',
+		}),
 	],
 	// 代码优化：合并以及压缩代码
 	// https://webpack.js.org/configuration/optimization/#optimization-minimize
@@ -27,11 +27,11 @@ module.exports = merge(common, {
 				uglifyOptions: {
 					output: {
 						//输出去掉注释
-						comments: false
+						comments: true
 					},
 					//输出不显示警告
 					compress: {
-						warnings: false,
+						warnings: true,
 						drop_debugger: true,
 						drop_console: true
 					}
