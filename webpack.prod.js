@@ -1,9 +1,6 @@
-
+const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-// const pkg = require('./package.json')
-// const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
@@ -14,11 +11,13 @@ module.exports = merge(common, {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
 		}),
-		// 提取公共css文件
-		new ExtractTextPlugin({
-			filename: 'css/[name].css',
-		}),
 	],
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: '[name].[chunkhash:8].js',
+		chunkFilename: 'js/[chunkhash:8].chunk.js',
+		publicPath: './'
+	},
 	// 代码优化：合并以及压缩代码
 	// https://webpack.js.org/configuration/optimization/#optimization-minimize
 	optimization: {

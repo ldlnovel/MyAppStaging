@@ -1,4 +1,4 @@
-
+const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
@@ -24,5 +24,10 @@ module.exports = merge(common, {
 		new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
-	],	
+	],
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: '[name].bundle.js',
+		chunkFilename: 'js/[chunkhash:8].chunk.js',
+	}
 })
