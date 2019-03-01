@@ -48,7 +48,6 @@ module.exports = {
 					"style-loader",
 					{ loader: 'css-loader', options: { importLoaders: 1 } },
 					{ loader: 'postcss-loader', options: { ident: "postcss", plugins: [require("autoprefixer")("last 100 versions")] } },
-					{ loader: 'less-loader', options: { javascriptEnabled: true } }
 				]
 			},
 			{
