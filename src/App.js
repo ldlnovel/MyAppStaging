@@ -31,11 +31,11 @@ class App extends Component {
                   )
                 })
               }
-              <Redirect exact strict from="/" to="/login" />
+              <Redirect exact strict from="/" to="/Base" />
             </Switch>
           </Router>
         </LocaleProvider>
-      </Provider >
+      </Provider>
     );
   }
 }
